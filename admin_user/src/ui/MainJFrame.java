@@ -6,6 +6,7 @@ package ui;
 
 import model.UserList;
 import java.awt.CardLayout;
+import javax.swing.JPanel;
 import model.User;
 
 /**
@@ -16,6 +17,7 @@ public class MainJFrame extends javax.swing.JFrame {
     
     User user;
     private UserList userlist;
+    
 
     /**
      * Creates new form MainJFrame
@@ -125,8 +127,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:
-        LoginJPanel loginpanel=new LoginJPanel(user);
-        SplitPane.setBottomComponent(loginpanel);
+        LoginJPanel panel=new LoginJPanel(userProcessContainer,user);
+        userProcessContainer.add("LoginJPanel",panel);
+        CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**

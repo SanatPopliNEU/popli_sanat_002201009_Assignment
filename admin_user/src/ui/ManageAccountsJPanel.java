@@ -25,6 +25,7 @@ public class ManageAccountsJPanel extends javax.swing.JPanel {
     
     private JPanel userProcessContainer;
     private UserList userlist;
+    private String result;
     ManageAccountsJPanel(JPanel userProcessContainer, UserList userlist) {
         initComponents();
         
@@ -169,17 +170,19 @@ public class ManageAccountsJPanel extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
-        String result=userlist.searchUser(txtSearch.getText());
-        if(result==null){
-            JOptionPane.showMessageDialog(this, "Invalid NEUID");
-            
-        }
-        else{
-            ViewAccountJPanel panel=new ViewAccountJPanel(userProcessContainer,result);
+       result=userlist.searchUser(txtSearch.getText());
+        
+        for(User user : userlist.getHistory()){
+            if(user.getUserid().equals(txtSearch.getText())){
+                
+                ViewAccountJPanel panel=new ViewAccountJPanel(userProcessContainer,user);
              userProcessContainer.add("ViewAccountJPanel",panel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-            
+            }else{
+                JOptionPane.showMessageDialog(null, "Not found");
+            }
+                
         }
     }//GEN-LAST:event_btnSearchActionPerformed
 

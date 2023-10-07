@@ -4,6 +4,7 @@
  */
 package ui;
 
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.User;
@@ -20,15 +21,24 @@ public class LoginJPanel extends javax.swing.JPanel {
      */
     
     
-
+private JPanel userProcessContainer;
+    private UserList userlist;
+    private User user;
     
 
     
-    User user;
+    
     public LoginJPanel(User user) {
         initComponents();
         this.user=user;
          // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    LoginJPanel(JPanel userProcessContainer, User user) {
+         initComponents();
+          this.userProcessContainer=userProcessContainer;
+        
+        this.user=user;// Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 
@@ -132,12 +142,12 @@ public class LoginJPanel extends javax.swing.JPanel {
 
     private void loginuserjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginuserjButtonActionPerformed
         // TODO add your handling code here:
-         user.setNeuid(txtNeuid.getText());
-         user.setUserid(txtUserid.getText());
-         user.setUsername(txtUserName.getText());
-         user.setPassword(txtPassword.getText());
+          ViewAccountJPanel panel=new ViewAccountJPanel(userProcessContainer,user);
+             userProcessContainer.add("ViewAccountJPanel",panel);
+             CardLayout layout=(CardLayout)userProcessContainer.getLayout();
+              layout.next(userProcessContainer);
         
-        JOptionPane.showMessageDialog(this, "Product Information Saved");
+        
     }//GEN-LAST:event_loginuserjButtonActionPerformed
 
 
