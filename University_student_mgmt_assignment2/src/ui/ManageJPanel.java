@@ -190,11 +190,13 @@ public class ManageJPanel extends javax.swing.JPanel {
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
          // TODO add your handling code here:
+         User u1=new User();
         String neuId = txtnuIdSearch.getText();
         User user = userList.searchUser(neuId);
+        
         if(user!= null){
         txtNeuId.setText(user.getNuId());
-        //txtUserName.setText(user.getUserName());
+             //txtUserName.setText(user.getUserName());
         txtPassword.setText(user.getPassword());
         txtUserID.setText(user.getUserId());
         //txtCourse.setText(user.getCourse());

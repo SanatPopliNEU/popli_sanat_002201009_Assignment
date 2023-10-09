@@ -183,12 +183,14 @@ public class SearchIDJPanel extends javax.swing.JPanel {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
+        User u1 = null;
         String neuId = txtnuIdSearch.getText();
         User user = userList.searchUser(neuId);
+        
         if(user!= null){
         txtNeuId.setText(user.getNuId());
         txtUserName.setText(user.getUserName());
-        txtPassword.setText(user.getPassword());
+        txtPassword.getPassword();
         txtUserID.setText(user.getUserId());
         txtCourse.setText(user.getCourse());
         }

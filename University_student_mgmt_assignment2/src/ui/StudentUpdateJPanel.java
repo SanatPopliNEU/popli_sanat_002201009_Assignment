@@ -215,7 +215,7 @@ public class StudentUpdateJPanel extends javax.swing.JPanel {
         user0.setNuId(txtNeuId.getText());
         user0.setUserId(txtUserID.getText());
         user0.setUserName(txtUserName.getText());
-        user0.setPassword(new String(txtPassword.getPassword()));
+        user0.setPassword(user0.hashPassword(new String(txtPassword.getPassword())));
         user0.setCourse(txtCourse.getText());
         user0.setEnabled("YES");
         userList.addUser(user0);

@@ -67,7 +67,12 @@ public class User {
         this.enabled = enabled;
     }
     
-    
+    public String hashPassword(String plaintextPassword){
+    int hash=0;
+    for(char c:plaintextPassword.toCharArray()){
+    hash+=c;}
+    return String.valueOf(hash);
+        }
     
     
 }

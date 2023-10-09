@@ -152,9 +152,9 @@ public class LoginJPanel extends javax.swing.JPanel {
        //userJFrame.logIn();
    
        //   userJFrame.removeAll();
-      // User user1  = new User();
+       User user1  = new User();
        String userId = txtUserId.getText();
-       String password = new String(txtPassword.getPassword());
+       String password=new String(txtPassword.getPassword());
         ArrayList<User> users = userList.getUser();
         System.out.println(users.size());
         if(!users.isEmpty()){
@@ -188,14 +188,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         }
   
     
-       // if(!previousPanels.empty()){
-         //   invalidate();
-           // remove(currentPanel);
-            //forwardPanels.push(currentPanel);
-           // currentPanel = previousPanels.pop();
-         //   add(currentPanel);
-          //  validate();
-        //}
+       
         
     
 
