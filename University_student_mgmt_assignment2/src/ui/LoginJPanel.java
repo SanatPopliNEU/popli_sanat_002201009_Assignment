@@ -16,7 +16,7 @@ import model.*;
  */
 public class LoginJPanel extends javax.swing.JPanel {
 
-    UserJFrame userJFrame; 
+    MainJFrame userJFrame; 
     JSplitPane jSplitPane;
     JPanel panel1;
     JPanel panel2;
@@ -28,7 +28,7 @@ public class LoginJPanel extends javax.swing.JPanel {
     /**
      * Creates new form UserJPanel
      */
-    public LoginJPanel(UserList userList,UserJFrame userJFrame, JSplitPane jSplitPane,JPanel panel1, JPanel panel2,JButton btnSearch,JButton btnViewUsers,JButton btnCreateUser,JButton btnManage) {
+    public LoginJPanel(UserList userList,MainJFrame userJFrame, JSplitPane jSplitPane,JPanel panel1, JPanel panel2,JButton btnSearch,JButton btnViewUsers,JButton btnCreateUser,JButton btnManage) {
         initComponents();
         this.userJFrame = userJFrame;
         this.jSplitPane = jSplitPane;
@@ -174,7 +174,7 @@ public class LoginJPanel extends javax.swing.JPanel {
          else if( user.getUserId().equalsIgnoreCase(userId) && password.equalsIgnoreCase(user.getPassword())){
          
              User u = userList.searchUser(user.getNuId());
-             UserUpdateJPanel userUpdateJPanel = new UserUpdateJPanel(userList,u);
+             StudentUpdateJPanel userUpdateJPanel = new StudentUpdateJPanel(userList,u);
              jSplitPane.setRightComponent(userUpdateJPanel);
          }
          else if( !user.getUserId().equalsIgnoreCase(userId) && password.equalsIgnoreCase(user.getPassword())){
