@@ -15,7 +15,7 @@ import model.*;
  * @author Sanat Popli
  */
 public class LoginJPanel extends javax.swing.JPanel {
-
+    EncryptionDecryption encryptiondecryption = new EncryptionDecryption();
     MainJFrame userJFrame; 
     JSplitPane jSplitPane;
     JPanel panel1;
@@ -154,7 +154,6 @@ public class LoginJPanel extends javax.swing.JPanel {
        //   userJFrame.removeAll();
        
        User u1 = new User();
-       EncryptionDecryption encryptiondecryption=new EncryptionDecryption();
        String userId= txtUserId.getText();
        String password = String.valueOf(txtPassword.getPassword());
         ArrayList<User> users = userList.getUser();

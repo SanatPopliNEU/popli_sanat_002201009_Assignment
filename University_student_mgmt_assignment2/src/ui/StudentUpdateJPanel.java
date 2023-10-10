@@ -14,6 +14,8 @@ public class StudentUpdateJPanel extends javax.swing.JPanel {
 
     UserList userList;
     User user;
+    SavedPasswordHistoryList passwordHistoryList;
+    EncryptionDecryption EncryptionDecryption = new EncryptionDecryption();
     /**
      * Creates new form UserUpdateJPanel
      */
@@ -21,8 +23,21 @@ public class StudentUpdateJPanel extends javax.swing.JPanel {
         initComponents();
         this.userList = userList;
         this.user = user;
+        passwordHistoryList = new SavedPasswordHistoryList();
+        populatePasswordList(this.userList);
+        
         
         populateForm(user);
+    }
+    public void populatePasswordList(UserList userList){
+    
+        for(User u : userList.getUser()){
+        
+           SavedPasswordHistory passwordHistory = new SavedPasswordHistory();
+           passwordHistory.setNeuId(u.getNuId());
+           passwordHistory.setPassword(EncryptionDecryption.decrypt(u.getPassword(),"secrete"));
+           passwordHistoryList.addPasswordHistory(passwordHistory);
+        }      
     }
 
     public void populateForm(User u){
@@ -31,7 +46,7 @@ public class StudentUpdateJPanel extends javax.swing.JPanel {
         if(user!= null){
         txtNeuId.setText(user.getNuId());
         txtUserName.setText(user.getUserName());
-        txtPassword.setText(user.getPassword());
+        txtPassword.setText(EncryptionDecryption.decrypt(user.getPassword(),"secrete"));
         txtUserID.setText(user.getUserId());
         txtCourse.setText(user.getCourse());
         }
@@ -212,11 +227,23 @@ public class StudentUpdateJPanel extends javax.swing.JPanel {
         userList.deleteUser(user);
         System.out.println("User Update After List Size"+userList.getUser().size());
         User user0 = new User();
-        EncryptionDecryption EncryptionDecryption =new EncryptionDecryption();
+        
         user0.setNuId(txtNeuId.getText());
         user0.setUserId(txtUserID.getText());
         user0.setUserName(txtUserName.getText());
-        user0.setPassword(EncryptionDecryption.encrypt(new String(txtPassword.getPassword()),"secrete"));
+        
+         SavedPasswordHistory password = passwordHistoryList.searchOldPassword(txtNeuId.getText());
+        System.out.print("");
+        if(!password.getPassword().equals(String.valueOf(txtPassword.getPassword()))){
+        user0.setPassword(EncryptionDecryption.encrypt(String.valueOf(txtPassword.getPassword()),"secrete"));
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Password same as Old password. Use new password");
+            return;
+        }
+        
+        
+        //user0.setPassword(EncryptionDecryption.encrypt(new String(txtPassword.getPassword()),"secrete"));
         user0.setCourse(txtCourse.getText());
         user0.setEnabled("YES");
         userList.addUser(user0);

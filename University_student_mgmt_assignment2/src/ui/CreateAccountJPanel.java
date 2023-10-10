@@ -13,6 +13,7 @@ import model.*;
 public class CreateAccountJPanel extends javax.swing.JPanel {
 
     UserList userList;
+    EncryptionDecryption EncryptionDecryption =new EncryptionDecryption();
     /**
      * Creates new form CreateUserJPanel
      */
@@ -153,8 +154,35 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
 
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
         // TODO add your handling code here:
-        User user = new User();
-        EncryptionDecryption EncryptionDecryption =new EncryptionDecryption();
+        
+        Boolean flag = true;
+        
+        String NEUID = txtNeuId.getText();
+            if(NEUID.matches("[0-9]{9}") == false){
+                JOptionPane.showMessageDialog(null, "Enter 9 Digit NEU ID");
+                flag = false;   
+            }
+            
+        String userid = txtUserID.getText();
+            if(userid.matches("[0-9]{9}") == false){
+                JOptionPane.showMessageDialog(null, "Enter valid User ID");
+                flag = false;   
+            }
+            
+            String password = txtPassword.getText();
+            if(password.matches("[a-zA-Z0-9@._-]{3,}") == false){
+                JOptionPane.showMessageDialog(null, "Incorrect Password");
+                flag = false;   
+            }
+            
+            
+            
+        
+        
+        
+        if(flag == true){
+            User user = new User();
+        
         user.setNuId(txtNeuId.getText());
         user.setUserId(txtUserID.getText());
         user.setUserName(txtUserName.getText());
@@ -181,7 +209,7 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
          txtCourse.setText("");
     }//GEN-LAST:event_btnCreateUserActionPerformed
 
-
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCreateUser;
     private javax.swing.JLabel jLabel1;

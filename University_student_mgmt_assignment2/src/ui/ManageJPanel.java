@@ -12,6 +12,7 @@ import model.*;
 public class ManageJPanel extends javax.swing.JPanel {
 
     UserList userList;
+    EncryptionDecryption EncryptionDecryption =new EncryptionDecryption();
     /**
      * Creates new form ManageJPanel
      */
@@ -191,7 +192,7 @@ public class ManageJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
          // TODO add your handling code here:
          User u1=new User();
-         EncryptionDecryption EncryptionDecryption =new EncryptionDecryption();
+         
         String neuId = txtnuIdSearch.getText();
         User user = userList.searchUser(neuId);
         
@@ -224,7 +225,8 @@ public class ManageJPanel extends javax.swing.JPanel {
         user01.setNuId(txtNeuId.getText());
         user01.setUserId(txtUserID.getText());
         user01.setUserName(user.getUserName());
-        user01.setPassword(user01.hashPassword(new String(txtPassword.getPassword())));
+//        user01.setPassword(user01.hashPassword(new String(txtPassword.getPassword())));
+        user01.setPassword( EncryptionDecryption.encrypt(String.valueOf(txtPassword.getPassword()),"secrete"));
         user01.setCourse(user.getCourse());
         user01.setEnabled(String.valueOf(comboEnable.getSelectedItem()));
         userList.deleteUser(user);
