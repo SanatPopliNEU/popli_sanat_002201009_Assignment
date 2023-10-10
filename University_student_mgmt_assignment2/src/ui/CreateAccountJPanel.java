@@ -154,27 +154,24 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
     private void btnCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateUserActionPerformed
         // TODO add your handling code here:
         User user = new User();
+        EncryptionDecryption EncryptionDecryption =new EncryptionDecryption();
         user.setNuId(txtNeuId.getText());
         user.setUserId(txtUserID.getText());
         user.setUserName(txtUserName.getText());
-        user.setPassword(txtPassword.getText());
+        user.setPassword(EncryptionDecryption.encrypt(txtPassword.getText(),"secrete"));
         user.setCourse(txtCourse.getText());
         user.setEnabled("YES");
         userList.addUser(user);
         
-        String userId = txtUserID.getText();
-        String NEUID  = txtNeuId.getText();
-        String pwd    = txtPassword.getText();
+        String pwd=String.valueOf(EncryptionDecryption.encrypt(txtPassword.getText(),"secrete"));
         
         if(pwd.length()<8 ){
         JOptionPane.showMessageDialog(this,"Password is not strong");}
-        else if(userId!=NEUID){
-            JOptionPane.showMessageDialog(this, "you are not a student");
-        }
+        
         
         else{
         
-         JOptionPane.showMessageDialog(this, "New User has been Created");
+         JOptionPane.showMessageDialog(this, "Good to go further");
         }
          
          txtNeuId.setText("");

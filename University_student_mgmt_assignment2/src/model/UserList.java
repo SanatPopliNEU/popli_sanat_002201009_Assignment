@@ -9,21 +9,22 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Jayesh Chindarkar
+ * @author Sanat Popli
  */
 public class UserList {
     
    
     ArrayList<User> userList = null;
+    EncryptionDecryption EncryptionDecryption =new EncryptionDecryption();
     
      public UserList(){
     
         this.userList = new ArrayList<User>();
         User user1 = new User();
         user1.setNuId(null);
-        user1.setUserId("admin");
+        user1.setUserId("ADMIN");
         user1.setUserName("admin");
-        user1.setPassword("admin");
+        user1.setPassword(EncryptionDecryption.encrypt("ADMIN","secrete"));
         user1.setEnabled("YES");
         userList.add(user1);
         System.out.print(userList);

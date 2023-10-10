@@ -53,6 +53,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         workjpanel.setBackground(new java.awt.Color(255, 255, 204));
 
+        btnLogin.setBackground(new java.awt.Color(204, 255, 204));
         btnLogin.setText("Log In");
         btnLogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +62,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnViewUsers.setBackground(new java.awt.Color(204, 255, 204));
         btnViewUsers.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btnViewUsers.setText("View Users");
         btnViewUsers.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -70,6 +72,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnSearch.setBackground(new java.awt.Color(204, 255, 204));
         btnSearch.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btnSearch.setText("Search User");
         btnSearch.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -79,6 +82,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnCreateUser.setBackground(new java.awt.Color(204, 255, 204));
         btnCreateUser.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btnCreateUser.setText("Create User");
         btnCreateUser.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -88,6 +92,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        btnManage.setBackground(new java.awt.Color(204, 255, 204));
         btnManage.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         btnManage.setText("Manage User");
         btnManage.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -126,15 +131,15 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(headinglabel)
                 .addGap(18, 18, 18)
                 .addComponent(btnLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(btnCreateUser)
-                .addGap(61, 61, 61)
+                .addGap(18, 18, 18)
                 .addComponent(btnViewUsers)
-                .addGap(45, 45, 45)
+                .addGap(18, 18, 18)
                 .addComponent(btnSearch)
-                .addGap(41, 41, 41)
+                .addGap(18, 18, 18)
                 .addComponent(btnManage)
-                .addGap(28, 28, 28))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(workjpanel);

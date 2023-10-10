@@ -212,10 +212,11 @@ public class StudentUpdateJPanel extends javax.swing.JPanel {
         userList.deleteUser(user);
         System.out.println("User Update After List Size"+userList.getUser().size());
         User user0 = new User();
+        EncryptionDecryption EncryptionDecryption =new EncryptionDecryption();
         user0.setNuId(txtNeuId.getText());
         user0.setUserId(txtUserID.getText());
         user0.setUserName(txtUserName.getText());
-        user0.setPassword(user0.hashPassword(new String(txtPassword.getPassword())));
+        user0.setPassword(EncryptionDecryption.encrypt(new String(txtPassword.getPassword()),"secrete"));
         user0.setCourse(txtCourse.getText());
         user0.setEnabled("YES");
         userList.addUser(user0);

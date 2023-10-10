@@ -152,17 +152,21 @@ public class LoginJPanel extends javax.swing.JPanel {
        //userJFrame.logIn();
    
        //   userJFrame.removeAll();
-       User user1  = new User();
-       String userId = txtUserId.getText();
-       String password=new String(txtPassword.getPassword());
+       
+       User u1 = new User();
+       EncryptionDecryption encryptiondecryption=new EncryptionDecryption();
+       String userId= txtUserId.getText();
+       String password = String.valueOf(txtPassword.getPassword());
         ArrayList<User> users = userList.getUser();
         System.out.println(users.size());
+        //System.out.print("UserId "+userId+" Password " +password);
         if(!users.isEmpty()){
             
          User user= userList.searchUserByUserId(userId);
-         
+         //System.out.print("Password " +user.getPassword());
          if(user.getEnabled().equalsIgnoreCase("YES")){
-         if(userId.equalsIgnoreCase("ADMIN") && password.equalsIgnoreCase("ADMIN")&& userId.equalsIgnoreCase(user.getUserId()) && password.equalsIgnoreCase(user.getPassword())){
+         String userPassword = encryptiondecryption.decrypt(user.getPassword(), "secrete");
+         if(userId.equalsIgnoreCase("ADMIN") && userId.equalsIgnoreCase(user.getUserId()) && password.equalsIgnoreCase(userPassword)){
          jSplitPane.remove(panel2);
          btnSearch.setVisible(true);
          btnViewUsers.setVisible(true);
@@ -171,11 +175,11 @@ public class LoginJPanel extends javax.swing.JPanel {
          jSplitPane.setRightComponent(panel2);
              
          }
-         else if( user.getUserId().equalsIgnoreCase(userId) && password.equalsIgnoreCase(user.getPassword())){
+         else if( user.getUserId().equalsIgnoreCase(userId) && password.equalsIgnoreCase(userPassword)){
          
              User u = userList.searchUser(user.getNuId());
-             StudentUpdateJPanel userUpdateJPanel = new StudentUpdateJPanel(userList,u);
-             jSplitPane.setRightComponent(userUpdateJPanel);
+             StudentUpdateJPanel studentUpdateJPanel = new StudentUpdateJPanel(userList,u);
+             jSplitPane.setRightComponent(studentUpdateJPanel);
          }
          else if( !user.getUserId().equalsIgnoreCase(userId) && password.equalsIgnoreCase(user.getPassword())){
             JOptionPane.showMessageDialog(this, "User Id is Incorrect");
@@ -188,9 +192,46 @@ public class LoginJPanel extends javax.swing.JPanel {
         }
   
     
-       
+       // if(!previousPanels.empty()){
+         //   invalidate();
+           // remove(currentPanel);
+            //forwardPanels.push(currentPanel);
+           // currentPanel = previousPanels.pop();
+         //   add(currentPanel);
+          //  validate();
+        //}
         
     
+                                 
+        
+       
+       
+         
+        
+        
+        
+  
+    
+       // if(!previousPanels.empty()){
+         //   invalidate();
+           // remove(currentPanel);
+            //forwardPanels.push(currentPanel);
+           // currentPanel = previousPanels.pop();
+         //   add(currentPanel);
+          //  validate();
+        //}
+        
+        
+         
+         
+        
+        
+        
+  
+    
+       
+        
+
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -224,3 +265,4 @@ public class LoginJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel useridlabel;
     // End of variables declaration//GEN-END:variables
 }
+

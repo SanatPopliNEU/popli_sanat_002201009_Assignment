@@ -3,10 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
+import java.util.regex.*;
 
 /**
  *
- * @author Jayesh Chindarkar
+ * @author Sanat Popli
  */
 public class User {
     
@@ -73,6 +74,22 @@ public class User {
     hash+=c;}
     return String.valueOf(hash);
         }
+    
+    
+    public static boolean validatePassword(String password) {
+        // Define the regular expression pattern for password validation
+        String pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$";
+        
+        // Create a Pattern object
+        Pattern p = Pattern.compile(pattern);
+
+        // Match the input password against the pattern
+        Matcher m = p.matcher(password);
+
+        // Return true if the password matches the pattern, otherwise false
+        return m.matches();
+    }
+
     
     
 }

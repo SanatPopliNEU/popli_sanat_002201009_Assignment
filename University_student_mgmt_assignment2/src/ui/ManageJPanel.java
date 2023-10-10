@@ -191,13 +191,14 @@ public class ManageJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
          // TODO add your handling code here:
          User u1=new User();
+         EncryptionDecryption EncryptionDecryption =new EncryptionDecryption();
         String neuId = txtnuIdSearch.getText();
         User user = userList.searchUser(neuId);
         
         if(user!= null){
         txtNeuId.setText(user.getNuId());
              //txtUserName.setText(user.getUserName());
-        txtPassword.setText(user.getPassword());
+        txtPassword.setText(EncryptionDecryption.encrypt(String.valueOf(user.getPassword()),"secrete"));
         txtUserID.setText(user.getUserId());
         //txtCourse.setText(user.getCourse());
         
@@ -223,7 +224,7 @@ public class ManageJPanel extends javax.swing.JPanel {
         user01.setNuId(txtNeuId.getText());
         user01.setUserId(txtUserID.getText());
         user01.setUserName(user.getUserName());
-        user01.setPassword(new String(txtPassword.getPassword()));
+        user01.setPassword(user01.hashPassword(new String(txtPassword.getPassword())));
         user01.setCourse(user.getCourse());
         user01.setEnabled(String.valueOf(comboEnable.getSelectedItem()));
         userList.deleteUser(user);
